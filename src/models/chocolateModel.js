@@ -14,7 +14,10 @@ const chocolateschema = mongoose.Schema(
     image: {
       type: String,
     },
-    userId: {
+    registerUserId: {
+      type: String,
+    },
+    updaterUserId: {
       type: String,
     },
   },

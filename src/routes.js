@@ -1,6 +1,7 @@
 const routes = require('express').Router();
 const userController = require('./controllers/userController');
 const authController = require('./controllers/authController');
+const chocolateController = require('./controllers/chocolateCrontroler');
 const jwtMid = require('./middlewares/jwt');
 
 routes.get('/', (req, res) => res.json({ msg: 'Tudo certo!' }));
@@ -21,5 +22,13 @@ routes.put('/user/:id', userController.update);
 
 /* ROTAS DE AUTENTICAÇÃO */
 routes.post('/change', authController.changepassword);
+
+/* ROTAS DO CHOCOLATE */
+
+routes.post('/chocolate', chocolateController.store);
+routes.get('/chocolate', chocolateController.index);
+routes.get('/chocolate/:id', chocolateController.show);
+routes.delete('/chocolate/:id', chocolateController.delete);
+routes.put('/chocolate/:id', chocolateController.update);
 
 module.exports = routes;
