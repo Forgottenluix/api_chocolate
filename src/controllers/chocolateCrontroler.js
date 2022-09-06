@@ -2,8 +2,7 @@ const chocolatemodel = require('../models/chocolateModel');
 
 class Chocolatecontroller {
   async store(req, res) {
-
-    const { userId } = req; //*usuário Logado*//
+    const { userId } = req; //* usuário Logado*//
     const infosToSave = {
       ...req.body,
       registerUserId: userId,
@@ -28,7 +27,6 @@ class Chocolatecontroller {
   }
 
   async update(req, res) {
-
     const { userId } = req;
     const { id } = req.params;
     const chocolate = await chocolatemodel.findById(id);
@@ -43,17 +41,21 @@ class Chocolatecontroller {
       name,
       details,
       value,
-      updaterUserId: userId.
+      updaterUserId: userId,
     };
 
     const infosToupdate = {
       ...req.body,
-     updaterUserId: userId,
+      updaterUserId: userId,
     };
 
-    const newChocolate = await chocolatemodel.findByIdAndUpdate(id, chocolatUpdate, {
-      new: true,
-    });
+    const newChocolate = await chocolatemodel.findByIdAndUpdate(
+      id,
+      chocolatUpdate,
+      {
+        new: true,
+      }
+    );
     return res.jason({ newChocolate });
   }
 
